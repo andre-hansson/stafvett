@@ -11,6 +11,8 @@ import { Answers } from './components/Answers';
 import { Guess } from './components/Guess';
 import { Toaster, toast } from 'sonner';
 import { calculateWordScore } from './utils/points';
+import { Icon } from './icons';
+import { ModalProvider } from './components/Modals';
 
 const App: FC = () => {
   const {
@@ -38,8 +40,8 @@ const App: FC = () => {
     startGame({ today, yesterday, date: d });
   }, [gameDate, startGame]);
 
-  const handleClear = useCallback(() => {
-    setGuess('');
+  const handleDeleteChar = useCallback(() => {
+    setGuess((prev) => prev.slice(0, -1));
   }, [setGuess]);
 
   const handleShuffle = useCallback(() => {
@@ -62,8 +64,11 @@ const App: FC = () => {
     if (answers.includes(guess)) {
       if (correctGuesses.includes(guess)) {
         toast.custom(() => (
-          <div className="toast warn">{`Ordet har redan hittats`}</div>
+          <div className="toast warn">{`🙃 Ordet har redan hittats`}</div>
         ));
+
+        setGuess('');
+        return;
       }
 
       addCorrectGuess(guess);
@@ -74,7 +79,7 @@ const App: FC = () => {
       ));
     } else {
       toast.custom(() => (
-        <div className="toast warn">{`Ordet finns inte med i listan`}</div>
+        <div className="toast warn">{`🤦 Ordet finns inte med i listan`}</div>
       ));
     }
     setGuess('');
@@ -89,27 +94,30 @@ const App: FC = () => {
   ]);
 
   return (
-    <div className="flex flex-col h-screen w-full max-w-[600px] mx-auto">
-      <Header />
-      {/* <Answers /> */}
-      <div className="flex flex-col flex-1 bg-neutral-200 dark:bg-darkneutral-300 justify-between pb-4 gap-2 items-center">
-        <div className="flex-1 flex flex-col gap-2 justify-center relative">
+    <ModalProvider>
+      <div className="flex flex-col items-center h-screen">
+        <Header />
+        {/* <Answers /> */}
+        <div className="w-full flex flex-col flex-1 bg-neutral-200 dark:bg-darkneutral-300 py-4 gap-2 items-center">
           <Guess currentGuess={guess} />
           <HexagonGrid
             characters={charArray}
             main={main}
             onHexagonClick={(char) => setGuess((current) => current + char)}
           />
+          <div className="flex gap-4 mt-3">
+            <Button label={<Icon.Backspace />} onClick={handleDeleteChar} />
+            <Button label={<Icon.Shuffle />} onClick={handleShuffle} />
+            <Button
+              label={<Icon.Check />}
+              onClick={handleGuess}
+              disabled={!(guess.length > 3)}
+            />
+          </div>
         </div>
-        <div className="flex gap-4">
-          <Button label="Clear" onClick={handleClear} />
-          <Button label="Shuffle" onClick={handleShuffle} />
-          <Button label="Enter" onClick={handleGuess} />
-        </div>
+        <Toaster position="top-center" richColors />
       </div>
-
-      <Toaster position="top-center" richColors />
-    </div>
+    </ModalProvider>
   );
 };
 
