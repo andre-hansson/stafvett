@@ -2,7 +2,7 @@ export const calculateWordScore = (
   word: string
 ): { score: number; message: string } => {
   if (word.length === 4) return { score: 1, message: '👍' };
-  if (isPangram(word)) return { score: word.length + 7, message: '🔥' };
+  if (isPangram(word)) return { score: word.length + 25, message: '🔥' };
   return { score: word.length, message: '🎉' };
 };
 
