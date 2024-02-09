@@ -7,7 +7,7 @@ import dayjs from 'dayjs';
 import { useActiveGameStore } from './store';
 import { Button } from './components/Buttons';
 import { Header } from './components/Header';
-import { Answers } from './components/Answers';
+// import { Answers } from './components/Answers';
 import { Guess } from './components/Guess';
 import { Toaster, toast } from 'sonner';
 import { calculateWordScore } from './utils/points';
