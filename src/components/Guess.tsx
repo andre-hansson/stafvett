@@ -24,7 +24,7 @@ export const Guess: FC<GuessProps> = ({ currentGuess }) => {
   }, [currentGuess, main]);
 
   return (
-    <div className="text-center text-3xl h-9 tracking-wide uppercase text-darkneutral-300 dark:text-neutral-200">
+    <div className="text-center text-2xl h-9 tracking-wide uppercase text-darkneutral-300 dark:text-neutral-200">
       {current}
     </div>
   );

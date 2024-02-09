@@ -29,7 +29,7 @@ export const Progressbar: FC = memo(() => {
 
   return (
     <div
-      className="h-5 flex-1 bg-neutral-400 dark:bg-darkneutral-400 rounded-full overflow-hidden relative"
+      className="h-4 md:h-5 flex-1 bg-neutral-400 dark:bg-darkneutral-400 rounded-full overflow-hidden relative"
       onClick={() => {
         clearCorrectGuess();
         resetScore();

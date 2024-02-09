@@ -20,7 +20,8 @@ export const Accordion: FC<AccordionProps> = ({ children, isOpen }) => {
           }}
           transition={{ duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98] }}
           style={{
-            overflow: 'hidden'
+            overflow: 'hidden',
+            width: '100%'
           }}
         >
           {children}
