@@ -24,7 +24,7 @@ EXPOSE 8173
 
 # Run application
 #CMD [ "npm", "start" ]
-CMD serve -l 8173 -s dist
+CMD serve -s dist
 
 
 
