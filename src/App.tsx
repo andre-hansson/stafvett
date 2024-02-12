@@ -41,6 +41,13 @@ const App: FC = () => {
     startGame({ today, yesterday, date: d });
   }, [gameDate, startGame]);
 
+  const handleAddCharacterToGuess = useCallback(
+    (char: string) => {
+      setGuess((current) => current + char);
+    },
+    [setGuess]
+  );
+
   const handleDeleteChar = useCallback(() => {
     setGuess((prev) => prev.slice(0, -1));
   }, [setGuess]);
@@ -94,6 +101,24 @@ const App: FC = () => {
     setGuess
   ]);
 
+  useEffect(() => {
+    // Add keyboard support
+    const handleEvent = (event: KeyboardEvent) => {
+      if (event.code === 'Enter') {
+        handleGuess();
+      } else if (event.code === 'Backspace') {
+        handleDeleteChar();
+      } else if (characters.includes(event.key)) {
+        handleAddCharacterToGuess(event.key);
+      }
+    };
+
+    window.addEventListener('keydown', handleEvent, { passive: false });
+    return () => {
+      window.removeEventListener('keydown', handleEvent);
+    };
+  }, [characters, handleGuess, handleDeleteChar, handleAddCharacterToGuess]);
+
   return (
     <ModalProvider>
       <div className="flex flex-col items-center h-screen">
@@ -104,7 +129,7 @@ const App: FC = () => {
           <HexagonGrid
             characters={charArray}
             main={main}
-            onHexagonClick={(char) => setGuess((current) => current + char)}
+            onHexagonClick={handleAddCharacterToGuess}
           />
           <div className="flex gap-4 mt-3 mb-3">
             <Button label={<Icon.Backspace />} onClick={handleDeleteChar} />

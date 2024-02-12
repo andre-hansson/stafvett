@@ -1,4 +1,4 @@
-import { FC, useMemo } from 'react';
+import { FC, memo, useMemo } from 'react';
 import { useDarkModeStore } from '../../store';
 import resolveConfig from 'tailwindcss/resolveConfig';
 import tailwindConfig from '../../../tailwind.config';
@@ -16,34 +16,32 @@ type HexagonProps = {
   character: string;
   onHexagonClick: (char: string) => void;
 };
-export const Hexagon: FC<HexagonProps> = ({
-  character,
-  middle = false,
-  onHexagonClick
-}) => {
-  const { isDarkMode } = useDarkModeStore();
+export const Hexagon: FC<HexagonProps> = memo(
+  ({ character, middle = false, onHexagonClick }) => {
+    const { isDarkMode } = useDarkModeStore();
 
-  const color = useMemo(() => {
-    if (isDarkMode) {
-      return middle ? mainDark : dark;
-    } else {
-      return middle ? mainLight : light;
-    }
-  }, [middle, isDarkMode]);
+    const color = useMemo(() => {
+      if (isDarkMode) {
+        return middle ? mainDark : dark;
+      } else {
+        return middle ? mainLight : light;
+      }
+    }, [middle, isDarkMode]);
 
-  return (
-    <div className="flex" onClick={() => onHexagonClick(character)}>
-      <div className="flex">
-        <div className="hexagon-left" style={{ borderColor: color }} />
-        <div
-          className="hexagon-middle text-darkneutral-300 dark:text-neutral-300 uppercase font-heading font-medium"
-          style={{ backgroundColor: color }}
-        >
-          {character}
+    return (
+      <div className="flex" onClick={() => onHexagonClick(character)}>
+        <div className="flex">
+          <div className="hexagon-left" style={{ borderColor: color }} />
+          <div
+            className="hexagon-middle text-darkneutral-300 dark:text-neutral-300 uppercase font-heading font-medium"
+            style={{ backgroundColor: color }}
+          >
+            {character}
+          </div>
+          <div className="hexagon-right" style={{ borderColor: color }} />
         </div>
-        <div className="hexagon-right" style={{ borderColor: color }} />
       </div>
-    </div>
-  );
-};
+    );
+  }
+);
 Hexagon.displayName = 'Hexagon';

@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { Hexagon } from './Hexagon';
 
 type HexagonGridProps = {
@@ -6,7 +6,7 @@ type HexagonGridProps = {
   characters: string[];
   onHexagonClick: (char: string) => void;
 };
-export const HexagonGrid: FC<HexagonGridProps> = (props) => {
+export const HexagonGrid: FC<HexagonGridProps> = memo((props) => {
   const { characters, main, onHexagonClick } = props;
 
   return (
@@ -38,5 +38,5 @@ export const HexagonGrid: FC<HexagonGridProps> = (props) => {
       </div>
     </div>
   );
-};
+});
 HexagonGrid.displayName = 'HexagonGrid';

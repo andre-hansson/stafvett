@@ -4,6 +4,7 @@ import { useActiveGameStore } from '../store';
 import { CorrectGuessesModal } from './Modals';
 import { useModal } from '../hooks';
 import { Button } from './Buttons';
+import { isPangram } from '../utils/points';
 
 export const CorrectGuesses: FC = () => {
   const { correctGuesses } = useActiveGameStore();
@@ -43,7 +44,7 @@ export const CorrectGuesses: FC = () => {
             }}
           >
             <div className="bg-neutral-400 dark:bg-darkneutral-350 w-full flex-1 pt-2 px-2 rounded-t-xl flex flex-col">
-              <h2 className="font-heading text-lg text-center">Hittade ord</h2>
+              <h2 className="font-heading text-md text-center">Hittade ord</h2>
               <div className="border border-darkneutral-400 rounded-xl">
                 {Array.from({ length: rows }).map((_, row) => {
                   const guessesInRow = sortedGuesses.slice(
@@ -53,11 +54,19 @@ export const CorrectGuesses: FC = () => {
                   return (
                     <div
                       key={row}
-                      className="nth-[2n]:bg-darkneutral-400 flex gap-4 rounded-b-xl"
+                      className="nth-[2n]:bg-darkneutral-400/50 flex gap-3 rounded-b-xl"
                     >
                       {guessesInRow.map((guess, index) => (
-                        <div key={index} className="flex-1 px-3 py-1.5">
-                          {guess}
+                        <div key={index} className="flex-1 px-3 py-1">
+                          <span
+                            className={
+                              isPangram(guess)
+                                ? 'text-purple-800 dark:text-purple-300 font-medium'
+                                : ''
+                            }
+                          >
+                            {guess}
+                          </span>
                         </div>
                       ))}
 

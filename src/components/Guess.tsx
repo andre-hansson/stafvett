@@ -1,10 +1,10 @@
-import { FC, useMemo } from 'react';
+import { FC, memo, useMemo } from 'react';
 import { useActiveGameStore } from '../store';
 
 type GuessProps = {
   currentGuess: string;
 };
-export const Guess: FC<GuessProps> = ({ currentGuess }) => {
+export const Guess: FC<GuessProps> = memo(({ currentGuess }) => {
   const { main } = useActiveGameStore();
 
   const current = useMemo(() => {
@@ -24,9 +24,9 @@ export const Guess: FC<GuessProps> = ({ currentGuess }) => {
   }, [currentGuess, main]);
 
   return (
-    <div className="text-center text-2xl h-9 tracking-wide uppercase text-darkneutral-300 dark:text-neutral-200">
+    <p className="text-center text-2xl h-9 tracking-wide uppercase text-darkneutral-300 dark:text-neutral-200">
       {current}
-    </div>
+    </p>
   );
-};
+});
 Guess.displayName = 'Guess';
