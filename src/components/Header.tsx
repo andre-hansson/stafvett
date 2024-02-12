@@ -46,7 +46,7 @@ export const Header: FC = () => {
           <h1 className="font-heading italic font-extrabold text-center flex-1 text-3xl md:text-5xl text-purple-800 dark:text-purple-300">
             Stafvett
           </h1>
-          <div className="absolute text-[10px] md:text-sm -ml-2 md:ml-0 md:pl-2.5 bottom-2 translate-y-full translate-x-full font-medium">
+          <div className="absolute text-[10px] md:text-sm -ml-1 md:ml-0 md:pl-2.5 bottom-2 translate-y-full translate-x-full font-medium">
             {gameDate}
           </div>
         </div>

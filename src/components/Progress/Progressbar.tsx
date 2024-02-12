@@ -31,8 +31,10 @@ export const Progressbar: FC = memo(() => {
     <div
       className="h-4 md:h-5 flex-1 bg-neutral-400 dark:bg-darkneutral-400 rounded-full overflow-hidden relative"
       onClick={() => {
-        clearCorrectGuess();
-        resetScore();
+        if (process.env.NODE_ENV === 'development') {
+          clearCorrectGuess();
+          resetScore();
+        }
       }}
     >
       <div className="flex h-full">
