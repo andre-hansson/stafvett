@@ -19,25 +19,25 @@ export const ModalProvider: FC<ModalProviderProps> = (props) => {
     setVisible(!!modal);
   }, [modal]);
 
-  useEffect(() => {
-    const handleEvent = (event: Event) => {
-      if (visible) {
-        event.preventDefault();
-      }
-    };
+  // useEffect(() => {
+  //   const handleEvent = (event: Event) => {
+  //     if (visible) {
+  //       event.preventDefault();
+  //     }
+  //   };
 
-    /**
-     * Disabled scroll when modal is open
-     * Using preventDefault to force the scrollbar to remain visible.
-     * This prevent shifting of the background content when the modal is toggled.
-     */
-    window.addEventListener('wheel', handleEvent, { passive: false });
-    window.addEventListener('touchmove', handleEvent, { passive: false });
-    return () => {
-      window.removeEventListener('wheel', handleEvent);
-      window.removeEventListener('touchmove', handleEvent);
-    };
-  }, [visible]);
+  //   /**
+  //    * Disabled scroll when modal is open
+  //    * Using preventDefault to force the scrollbar to remain visible.
+  //    * This prevent shifting of the background content when the modal is toggled.
+  //    */
+  //   window.addEventListener('wheel', handleEvent, { passive: false });
+  //   window.addEventListener('touchmove', handleEvent, { passive: false });
+  //   return () => {
+  //     window.removeEventListener('wheel', handleEvent);
+  //     window.removeEventListener('touchmove', handleEvent);
+  //   };
+  // }, [visible]);
 
   const handleSetModal = useCallback((modal: ReactNode) => {
     setModal(modal);
