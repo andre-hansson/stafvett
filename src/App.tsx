@@ -13,6 +13,7 @@ import { Toaster, toast } from 'sonner';
 import { calculateWordScore } from './utils/points';
 import { Icon } from './icons';
 import { ModalProvider } from './components/Modals';
+import { CorrectGuesses } from './components/CorrectGuesses';
 
 const App: FC = () => {
   const {
@@ -98,14 +99,14 @@ const App: FC = () => {
       <div className="flex flex-col items-center h-screen">
         <Header />
         {/* <Answers /> */}
-        <div className="w-full flex flex-col flex-1 bg-neutral-200 dark:bg-darkneutral-300 py-4 gap-2 items-center">
+        <div className="w-full flex flex-col flex-1 bg-neutral-200 dark:bg-darkneutral-300 pt-4 gap-2 items-center">
           <Guess currentGuess={guess} />
           <HexagonGrid
             characters={charArray}
             main={main}
             onHexagonClick={(char) => setGuess((current) => current + char)}
           />
-          <div className="flex gap-4 mt-3">
+          <div className="flex gap-4 mt-3 mb-3">
             <Button label={<Icon.Backspace />} onClick={handleDeleteChar} />
             <Button label={<Icon.Shuffle />} onClick={handleShuffle} />
             <Button
@@ -114,9 +115,10 @@ const App: FC = () => {
               disabled={!(guess.length > 3)}
             />
           </div>
+          <CorrectGuesses />
         </div>
-        <Toaster position="top-center" richColors />
       </div>
+      <Toaster position="top-center" richColors />
     </ModalProvider>
   );
 };

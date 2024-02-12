@@ -59,7 +59,7 @@ export const Header: FC = () => {
       </Accordion>
       <Progress />
       <div
-        className="bg-neutral-400 dark:bg-darkneutral-350 w-full"
+        className="bg-neutral-400 dark:bg-darkneutral-350 w-full hidden"
         onClick={showAllCorrectGuesses}
       >
         <div className="w-full max-w-[600px] mx-auto px-4 overflow-hidden text-ellipsis whitespace-nowrap font-heading text-base md:text-lg">

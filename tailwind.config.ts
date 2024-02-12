@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss';
+import plugin from 'tailwindcss/plugin';
 import defaultTheme from 'tailwindcss/defaultTheme';
 
 /** @type {import('tailwindcss').Config} */
@@ -55,6 +56,22 @@ const config: Config = {
       }
     }
   },
-  plugins: []
+  plugins: [
+    plugin(({ matchVariant }) => {
+      matchVariant(
+        'nth',
+        (value) => {
+          return `&:nth-child(${value})`;
+        },
+        {
+          values: {
+            1: '1',
+            2: '2',
+            3: '3'
+          }
+        }
+      );
+    })
+  ]
 };
 export default config;
