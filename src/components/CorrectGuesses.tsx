@@ -23,7 +23,7 @@ export const CorrectGuesses: FC = () => {
   }, [correctGuesses]);
 
   return (
-    <div className="flex-1 flex md:hidden w-full">
+    <div className="flex-1 flex w-full">
       <AnimatePresence initial={false}>
         {!!sortedGuesses.length && (
           <motion.section
