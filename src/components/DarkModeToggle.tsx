@@ -17,10 +17,11 @@ export const DarkModeToggle: FC = () => {
   const { isDarkMode, toggleDarkMode } = useDarkModeStore();
 
   useEffect(() => {
+    const html = document.querySelector('html');
     if (isDarkMode) {
-      document.body.classList.add('dark');
+      html?.classList.add('dark');
     } else {
-      document.body.classList.remove('dark');
+      html?.classList.remove('dark');
     }
   }, [isDarkMode]);
 

@@ -43,6 +43,7 @@ export const CorrectGuesses: FC = () => {
             }}
           >
             <div className="bg-neutral-400 dark:bg-darkneutral-350 w-full flex-1 pt-2 px-2 rounded-t-xl flex flex-col">
+              <h2 className="font-heading text-lg text-center">Hittade ord</h2>
               <div className="border border-darkneutral-400 rounded-xl">
                 {Array.from({ length: rows }).map((_, row) => {
                   const guessesInRow = sortedGuesses.slice(
