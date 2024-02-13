@@ -23,7 +23,9 @@ const App: FC = () => {
     answers,
     correctGuesses,
     gameDate,
+    score,
     startGame,
+    storeYesterdayProgress,
     addCorrectGuess,
     updateScore
   } = useActiveGameStore();
@@ -35,12 +37,16 @@ const App: FC = () => {
 
   useEffect(() => {
     const date = dayjs();
+
+    // Only create one game per day
     if (date.isSame(gameDate, 'day')) return;
+
+    storeYesterdayProgress(score, correctGuesses);
     const d = date.format('YYYY-MM-DD');
 
     const { today, yesterday } = createGameObject(answersFile, d);
     startGame({ today, yesterday, date: d });
-  }, [gameDate, startGame]);
+  }, [correctGuesses, score, gameDate, startGame, storeYesterdayProgress]);
 
   const handleAddCharacterToGuess = useCallback(
     (char: string) => {

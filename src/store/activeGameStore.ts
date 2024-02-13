@@ -9,7 +9,13 @@ interface ActiveGameState {
   correctGuesses: string[];
   score: number;
   gameDate: string;
+  yesterdayMain: string;
+  yesterdayCharacters: string;
+  yesterdayAnswers: string[];
+  yesterdayScore: number;
+  yesterdayCorrectGuesses: string[];
   startGame: (game: Game) => void;
+  storeYesterdayProgress: (score: number, correctGuesses: string[]) => void;
   addCorrectGuess: (guess: string) => void;
   updateScore: (value: number) => void;
   clearCorrectGuess: () => void;
@@ -25,6 +31,11 @@ export const useActiveGameStore = create<ActiveGameState>()(
       correctGuesses: [],
       gameDate: '',
       score: 0,
+      yesterdayMain: '',
+      yesterdayCharacters: '',
+      yesterdayAnswers: [],
+      yesterdayScore: 0,
+      yesterdayCorrectGuesses: [],
       startGame: (game: Game) => {
         set(() => ({
           main: game.today.main,
@@ -32,8 +43,17 @@ export const useActiveGameStore = create<ActiveGameState>()(
           answers: game.today.answers,
           gameDate: game.date,
           correctGuesses: [],
-          score: 0
+          score: 0,
+          yesterdayMain: game.yesterday.main,
+          yesterdayCharacters: game.yesterday.characters,
+          yesterdayAnswers: game.yesterday.answers
         }));
+      },
+      storeYesterdayProgress: (score, correctGuesses) => {
+        set({
+          yesterdayScore: score,
+          yesterdayCorrectGuesses: correctGuesses
+        });
       },
       addCorrectGuess: (guess: string) => {
         set({
