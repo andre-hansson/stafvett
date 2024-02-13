@@ -7,7 +7,11 @@ import { Accordion } from './Accordion';
 import { ChevronDownIcon } from '../icons/ChevronDownIcon';
 import { motion } from 'framer-motion';
 import { useModal } from '../hooks';
-import { CorrectGuessesModal, InfoModal } from './Modals';
+import {
+  CorrectGuessesModal,
+  InfoModal,
+  YesterdaysAnswersModal
+} from './Modals';
 
 export const Header: FC = () => {
   const { gameDate, correctGuesses } = useActiveGameStore();
@@ -77,10 +81,14 @@ const InfoRow: FC = () => {
   const showInfo = useCallback(() => {
     setModal(<InfoModal />);
   }, [setModal]);
+
+  const showYesterday = useCallback(() => {
+    setModal(<YesterdaysAnswersModal />);
+  }, [setModal]);
   return (
     <div className="flex justify-center border-t border-t-purple-800 dark:border-t-purple-300 w-full">
       <div className="flex justify-evenly py-1.5 md:py-4 px-5 w-full max-w-[600px]">
-        <Button label="Yesterday" onClick={() => {}} />
+        <Button label="Yesterday" onClick={showYesterday} />
         <Button label="Info" onClick={showInfo} />
       </div>
     </div>
