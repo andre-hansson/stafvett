@@ -1,13 +1,13 @@
 import { FC, memo } from 'react';
 import { Hexagon } from './Hexagon';
+import { useActiveGameStore } from '../../store';
 
 type HexagonGridProps = {
-  main: string;
-  characters: string[];
   onHexagonClick: (char: string) => void;
 };
 export const HexagonGrid: FC<HexagonGridProps> = memo((props) => {
-  const { characters, main, onHexagonClick } = props;
+  const { onHexagonClick } = props;
+  const { main, characters } = useActiveGameStore();
 
   return (
     <div className="pt-[43px] md:pt-[56px]">
