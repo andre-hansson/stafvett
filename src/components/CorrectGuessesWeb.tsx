@@ -27,7 +27,7 @@ export const CorrectGuessesWeb: FC = () => {
                 className="nth-[2n]:bg-darkneutral-400/50 flex justify-evenly"
               >
                 {guessesInRow.map((guess, index) => (
-                  <div key={index} className="py-1.5 px-2 text-center">
+                  <div key={index} className="py-1.5 px-2 text-center flex-1">
                     <span
                       className={classNames(
                         isPangram(guess)

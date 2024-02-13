@@ -3,15 +3,16 @@ import { Hexagon } from './Hexagon';
 import { useActiveGameStore } from '../../store';
 
 type HexagonGridProps = {
+  characters: string[];
   onHexagonClick: (char: string) => void;
 };
 export const HexagonGrid: FC<HexagonGridProps> = memo((props) => {
-  const { onHexagonClick } = props;
-  const { main, characters } = useActiveGameStore();
+  const { characters, onHexagonClick } = props;
+  const { main } = useActiveGameStore();
 
   const chars = useMemo(() => {
-    return characters.split('').filter((c) => c !== main);
-  }, [characters, main]);
+    return characters;
+  }, [characters]);
 
   return (
     <div className="pt-[43px] md:pt-[56px]">

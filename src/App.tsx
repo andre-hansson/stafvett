@@ -31,9 +31,7 @@ const App: FC = () => {
   } = useActiveGameStore();
 
   const [guess, setGuess] = useState('');
-  const [charArray, setCharArray] = useState(
-    characters.split('').filter((c) => c !== main)
-  );
+  const [charArray, setCharArray] = useState<string[]>([]);
 
   useEffect(() => {
     const date = dayjs();
@@ -54,6 +52,10 @@ const App: FC = () => {
     },
     [setGuess]
   );
+
+  useEffect(() => {
+    setCharArray(characters.split('').filter((c) => c !== main));
+  }, [characters, main, setCharArray]);
 
   const handleDeleteChar = useCallback(() => {
     setGuess((prev) => prev.slice(0, -1));
@@ -135,7 +137,10 @@ const App: FC = () => {
         {/* Mobile */}
         <div className="w-full flex md:hidden flex-col md:flex-row flex-1 bg-neutral-200 dark:bg-darkneutral-300 pt-4 gap-2 items-center">
           <Guess currentGuess={guess} />
-          <HexagonGrid onHexagonClick={handleAddCharacterToGuess} />
+          <HexagonGrid
+            characters={charArray}
+            onHexagonClick={handleAddCharacterToGuess}
+          />
           <div className="flex gap-4 mt-3 mb-3">
             <Button label={<Icon.Backspace />} onClick={handleDeleteChar} />
             <Button label={<Icon.Shuffle />} onClick={handleShuffle} />
@@ -152,7 +157,10 @@ const App: FC = () => {
         <div className="w-full hidden md:flex flex-row flex-1 bg-neutral-200 dark:bg-darkneutral-300 pt-4 gap-2 items-center justify-center">
           <div className="flex flex-col flex-1 items-center">
             <Guess currentGuess={guess} />
-            <HexagonGrid onHexagonClick={handleAddCharacterToGuess} />
+            <HexagonGrid
+              characters={charArray}
+              onHexagonClick={handleAddCharacterToGuess}
+            />
             <div className="flex gap-4 mt-3 mb-3">
               <Button label={<Icon.Backspace />} onClick={handleDeleteChar} />
               <Button label={<Icon.Shuffle />} onClick={handleShuffle} />

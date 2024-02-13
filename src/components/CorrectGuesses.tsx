@@ -5,6 +5,7 @@ import { CorrectGuessesModal } from './Modals';
 import { useModal } from '../hooks';
 import { Button } from './Buttons';
 import { isPangram } from '../utils/points';
+import classNames from 'classnames';
 
 export const CorrectGuesses: FC = () => {
   const { correctGuesses } = useActiveGameStore();
@@ -15,10 +16,10 @@ export const CorrectGuesses: FC = () => {
   }, [setModal]);
 
   const { rows, sortedGuesses } = useMemo(() => {
-    const rows = Math.ceil(correctGuesses.length / 4);
+    const rows = Math.ceil(correctGuesses.length / 3);
     return {
       rows,
-      sortedGuesses: [...correctGuesses].reverse().slice(0, 8)
+      sortedGuesses: [...correctGuesses].reverse().slice(0, 6)
     };
   }, [correctGuesses]);
 
@@ -45,32 +46,34 @@ export const CorrectGuesses: FC = () => {
           >
             <div className="bg-neutral-400 dark:bg-darkneutral-350 w-full flex-1 pt-2 px-2 rounded-t-xl flex flex-col">
               <h2 className="font-heading text-md text-center">Hittade ord</h2>
-              <div className="border border-darkneutral-400 rounded-xl">
+              <div className="border border-darkneutral-400 max-h-96 overflow-y-scroll">
                 {Array.from({ length: rows }).map((_, row) => {
                   const guessesInRow = sortedGuesses.slice(
-                    4 * row,
-                    4 * row + 4
+                    3 * row,
+                    3 * row + 3
                   );
                   return (
                     <div
                       key={row}
-                      className="nth-[2n]:bg-darkneutral-400/50 flex gap-3 rounded-b-xl"
+                      className="nth-[2n]:bg-darkneutral-400/50 flex justify-evenly"
                     >
                       {guessesInRow.map((guess, index) => (
-                        <div key={index} className="flex-1 px-3 py-1">
+                        <div
+                          key={index}
+                          className="py-1.5 px-2 text-center flex-1"
+                        >
                           <span
-                            className={
+                            className={classNames(
                               isPangram(guess)
-                                ? 'text-purple-800 dark:text-purple-300 font-medium'
+                                ? 'text-green-800 dark:text-green-300 font-bold'
                                 : ''
-                            }
+                            )}
                           >
                             {guess}
                           </span>
                         </div>
                       ))}
-
-                      {guessesInRow.length !== 4 && (
+                      {guessesInRow.length !== 3 && (
                         <div
                           style={{
                             width: `calc(100% / ${guessesInRow.length})`

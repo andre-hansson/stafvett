@@ -66,7 +66,7 @@ export const YesterdaysAnswersModal: FC = () => {
                 <div
                   key={index}
                   className={classNames(
-                    'py-1.5 px-2 text-center',
+                    'py-1.5 px-2 text-center flex-1',
                     yesterdayCorrectGuesses.indexOf(guess) !== -1
                       ? 'bg-purple-300 text-darkneutral-300'
                       : ''
