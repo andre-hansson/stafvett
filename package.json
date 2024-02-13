@@ -13,6 +13,7 @@
     "generate-answers": ""
   },
   "dependencies": {
+    "classnames": "^2.5.1",
     "dayjs": "^1.11.10",
     "framer-motion": "^11.0.3",
     "react": "^18.2.0",

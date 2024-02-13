@@ -33,6 +33,7 @@ const RAW_RUNTIME_STATE =
           ["@typescript-eslint/parser", "virtual:ddda2d98ebc100066ef86db98a2ab31588dac90eebe918d3a78dd8f4d391d6f2006ef3cbb325103774d173f5b9cac0285c5a9161f84cf3c997ce59735ce84d15#npm:6.21.0"],\
           ["@vitejs/plugin-react-swc", "virtual:ddda2d98ebc100066ef86db98a2ab31588dac90eebe918d3a78dd8f4d391d6f2006ef3cbb325103774d173f5b9cac0285c5a9161f84cf3c997ce59735ce84d15#npm:3.6.0"],\
           ["autoprefixer", "virtual:ddda2d98ebc100066ef86db98a2ab31588dac90eebe918d3a78dd8f4d391d6f2006ef3cbb325103774d173f5b9cac0285c5a9161f84cf3c997ce59735ce84d15#npm:10.4.17"],\
+          ["classnames", "npm:2.5.1"],\
           ["cli-progress", "npm:3.12.0"],\
           ["dayjs", "npm:1.11.10"],\
           ["eslint", "npm:8.56.0"],\
@@ -1438,6 +1439,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../../.yarn/berry/cache/chownr-npm-2.0.0-638f1c9c61-10c0.zip/node_modules/chownr/",\
         "packageDependencies": [\
           ["chownr", "npm:2.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["classnames", [\
+      ["npm:2.5.1", {\
+        "packageLocation": "../../../.yarn/berry/cache/classnames-npm-2.5.1-c7273f3423-10c0.zip/node_modules/classnames/",\
+        "packageDependencies": [\
+          ["classnames", "npm:2.5.1"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -3472,6 +3482,7 @@ const RAW_RUNTIME_STATE =
           ["@typescript-eslint/parser", "virtual:ddda2d98ebc100066ef86db98a2ab31588dac90eebe918d3a78dd8f4d391d6f2006ef3cbb325103774d173f5b9cac0285c5a9161f84cf3c997ce59735ce84d15#npm:6.21.0"],\
           ["@vitejs/plugin-react-swc", "virtual:ddda2d98ebc100066ef86db98a2ab31588dac90eebe918d3a78dd8f4d391d6f2006ef3cbb325103774d173f5b9cac0285c5a9161f84cf3c997ce59735ce84d15#npm:3.6.0"],\
           ["autoprefixer", "virtual:ddda2d98ebc100066ef86db98a2ab31588dac90eebe918d3a78dd8f4d391d6f2006ef3cbb325103774d173f5b9cac0285c5a9161f84cf3c997ce59735ce84d15#npm:10.4.17"],\
+          ["classnames", "npm:2.5.1"],\
           ["cli-progress", "npm:3.12.0"],\
           ["dayjs", "npm:1.11.10"],\
           ["eslint", "npm:8.56.0"],\
