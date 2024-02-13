@@ -13,7 +13,7 @@ export const Guess: FC<GuessProps> = memo(({ currentGuess }) => {
         return (
           <span
             key={index}
-            className="font-medium text-purple-800 dark:text-purple-300"
+            className="font-extrabold text-purple-800 dark:text-purple-300"
           >
             {c}
           </span>
@@ -24,7 +24,7 @@ export const Guess: FC<GuessProps> = memo(({ currentGuess }) => {
   }, [currentGuess, main]);
 
   return (
-    <p className="text-center text-2xl h-9 tracking-wide uppercase text-darkneutral-300 dark:text-neutral-200">
+    <p className="text-center text-2xl h-9 tracking-widest uppercase text-darkneutral-300 dark:text-neutral-200">
       {current}
     </p>
   );
