@@ -4,8 +4,7 @@ import { useActiveGameStore } from '../store';
 import { CorrectGuessesModal } from './Modals';
 import { useModal } from '../hooks';
 import { Button } from './Buttons';
-import { isPangram } from '../utils/points';
-import classNames from 'classnames';
+import { FoundWords } from './FoundWords';
 
 export const CorrectGuesses: FC = () => {
   const { correctGuesses } = useActiveGameStore();
@@ -46,44 +45,8 @@ export const CorrectGuesses: FC = () => {
           >
             <div className="bg-neutral-400 dark:bg-darkneutral-350 w-full flex-1 pt-2 px-2 rounded-t-xl flex flex-col">
               <h2 className="font-heading text-md text-center">Hittade ord</h2>
-              <div className="border border-darkneutral-400 max-h-96 overflow-y-scroll">
-                {Array.from({ length: rows }).map((_, row) => {
-                  const guessesInRow = sortedGuesses.slice(
-                    3 * row,
-                    3 * row + 3
-                  );
-                  return (
-                    <div
-                      key={row}
-                      className="nth-[2n]:bg-darkneutral-400/50 flex justify-evenly"
-                    >
-                      {guessesInRow.map((guess, index) => (
-                        <div
-                          key={index}
-                          className="py-1.5 px-2 text-center flex-1"
-                        >
-                          <span
-                            className={classNames(
-                              isPangram(guess)
-                                ? 'text-green-800 dark:text-green-300 font-bold'
-                                : ''
-                            )}
-                          >
-                            {guess}
-                          </span>
-                        </div>
-                      ))}
-                      {guessesInRow.length !== 3 && (
-                        <div
-                          style={{
-                            width: `calc(100% / ${guessesInRow.length})`
-                          }}
-                        />
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
+              <FoundWords rows={rows} foundWords={sortedGuesses} />
+
               <div className="flex-1 flex justify-center items-start pt-4">
                 <Button onClick={showAllCorrectGuesses} label={'Visa alla'} />
               </div>
