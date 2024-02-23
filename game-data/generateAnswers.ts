@@ -1,10 +1,11 @@
+import { Answer } from '../types/Answer';
+import { convertFileToArray, removeInvalidWords } from './generatationUtils';
+import { createGameObject } from '../src/utils/createGameObject';
+import { shuffleArray } from '../src/utils/shuffleArray';
 import { writeFileSync } from 'fs';
 import cliProgress from 'cli-progress';
 import currentAnswers from './answers/all-answers.json';
-import { convertFileToArray, removeInvalidWords } from './generatationUtils';
-import { shuffleArray } from '../src/utils/shuffleArray';
-import { createGameObject } from '../src/utils/createGameObject';
-import { Answer } from '../types/Answer';
+import readlineSync from 'readline-sync';
 
 const minimumAnswerCount = 20;
 const numPuzzlesPerFile = 3650; // 10 years...
@@ -81,13 +82,13 @@ for (let offset = 0; offset < 7; offset++) {
           console.log(
             `newCurrentGameJson: ${newCurrentGameJson.substring(0, 100)} ...`
           );
-          //   if (
-          //     !readlineSync.keyInYN(
-          //       "Today's and yesterday's puzzles have changed. Continue?"
-          //     )
-          //   ) {
-          //     process.exit();
-          //   }
+          if (
+            !readlineSync.keyInYN(
+              "Today's and yesterday's puzzles have changed. Continue?"
+            )
+          ) {
+            process.exit();
+          }
         } else {
           console.log(
             `Checks passed. Today's and yesterday's puzzles have not changed.`
@@ -103,6 +104,7 @@ for (let offset = 0; offset < 7; offset++) {
     createProgressbar.update(completed);
   });
 }
+console.log('allAnswers', allAnswers);
 createProgressbar.stop();
 console.log(
   `Processed ${completed} puzzles, and ${Math.floor(completed / numPuzzlesPerFile)} files.`

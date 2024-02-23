@@ -29,6 +29,7 @@ const RAW_RUNTIME_STATE =
           ["@types/cli-progress", "npm:3.11.5"],\
           ["@types/react", "npm:18.2.55"],\
           ["@types/react-dom", "npm:18.2.18"],\
+          ["@types/readline-sync", "npm:1.4.8"],\
           ["@typescript-eslint/eslint-plugin", "virtual:ddda2d98ebc100066ef86db98a2ab31588dac90eebe918d3a78dd8f4d391d6f2006ef3cbb325103774d173f5b9cac0285c5a9161f84cf3c997ce59735ce84d15#npm:6.21.0"],\
           ["@typescript-eslint/parser", "virtual:ddda2d98ebc100066ef86db98a2ab31588dac90eebe918d3a78dd8f4d391d6f2006ef3cbb325103774d173f5b9cac0285c5a9161f84cf3c997ce59735ce84d15#npm:6.21.0"],\
           ["@vitejs/plugin-react-swc", "virtual:ddda2d98ebc100066ef86db98a2ab31588dac90eebe918d3a78dd8f4d391d6f2006ef3cbb325103774d173f5b9cac0285c5a9161f84cf3c997ce59735ce84d15#npm:3.6.0"],\
@@ -44,6 +45,7 @@ const RAW_RUNTIME_STATE =
           ["prettier", "npm:3.2.5"],\
           ["react", "npm:18.2.0"],\
           ["react-dom", "virtual:ddda2d98ebc100066ef86db98a2ab31588dac90eebe918d3a78dd8f4d391d6f2006ef3cbb325103774d173f5b9cac0285c5a9161f84cf3c997ce59735ce84d15#npm:18.2.0"],\
+          ["readline-sync", "npm:1.4.10"],\
           ["sonner", "virtual:ddda2d98ebc100066ef86db98a2ab31588dac90eebe918d3a78dd8f4d391d6f2006ef3cbb325103774d173f5b9cac0285c5a9161f84cf3c997ce59735ce84d15#npm:1.4.0"],\
           ["tailwindcss", "npm:3.4.1"],\
           ["tsx", "npm:4.7.0"],\
@@ -849,6 +851,15 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@types/react-dom", "npm:18.2.18"],\
           ["@types/react", "npm:18.2.55"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@types/readline-sync", [\
+      ["npm:1.4.8", {\
+        "packageLocation": "../../../.yarn/berry/cache/@types-readline-sync-npm-1.4.8-65bcd32e43-10c0.zip/node_modules/@types/readline-sync/",\
+        "packageDependencies": [\
+          ["@types/readline-sync", "npm:1.4.8"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -3245,6 +3256,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["readline-sync", [\
+      ["npm:1.4.10", {\
+        "packageLocation": "../../../.yarn/berry/cache/readline-sync-npm-1.4.10-6809f52ca7-10c0.zip/node_modules/readline-sync/",\
+        "packageDependencies": [\
+          ["readline-sync", "npm:1.4.10"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["resolve", [\
       ["patch:resolve@npm%3A1.22.8#optional!builtin<compat/resolve>::version=1.22.8&hash=c3c19d", {\
         "packageLocation": "../../../.yarn/berry/cache/resolve-patch-4254c24959-10c0.zip/node_modules/resolve/",\
@@ -3478,6 +3498,7 @@ const RAW_RUNTIME_STATE =
           ["@types/cli-progress", "npm:3.11.5"],\
           ["@types/react", "npm:18.2.55"],\
           ["@types/react-dom", "npm:18.2.18"],\
+          ["@types/readline-sync", "npm:1.4.8"],\
           ["@typescript-eslint/eslint-plugin", "virtual:ddda2d98ebc100066ef86db98a2ab31588dac90eebe918d3a78dd8f4d391d6f2006ef3cbb325103774d173f5b9cac0285c5a9161f84cf3c997ce59735ce84d15#npm:6.21.0"],\
           ["@typescript-eslint/parser", "virtual:ddda2d98ebc100066ef86db98a2ab31588dac90eebe918d3a78dd8f4d391d6f2006ef3cbb325103774d173f5b9cac0285c5a9161f84cf3c997ce59735ce84d15#npm:6.21.0"],\
           ["@vitejs/plugin-react-swc", "virtual:ddda2d98ebc100066ef86db98a2ab31588dac90eebe918d3a78dd8f4d391d6f2006ef3cbb325103774d173f5b9cac0285c5a9161f84cf3c997ce59735ce84d15#npm:3.6.0"],\
@@ -3493,6 +3514,7 @@ const RAW_RUNTIME_STATE =
           ["prettier", "npm:3.2.5"],\
           ["react", "npm:18.2.0"],\
           ["react-dom", "virtual:ddda2d98ebc100066ef86db98a2ab31588dac90eebe918d3a78dd8f4d391d6f2006ef3cbb325103774d173f5b9cac0285c5a9161f84cf3c997ce59735ce84d15#npm:18.2.0"],\
+          ["readline-sync", "npm:1.4.10"],\
           ["sonner", "virtual:ddda2d98ebc100066ef86db98a2ab31588dac90eebe918d3a78dd8f4d391d6f2006ef3cbb325103774d173f5b9cac0285c5a9161f84cf3c997ce59735ce84d15#npm:1.4.0"],\
           ["tailwindcss", "npm:3.4.1"],\
           ["tsx", "npm:4.7.0"],\

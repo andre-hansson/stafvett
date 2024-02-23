@@ -55607,8 +55607,8 @@ linjeväljare
 linjär
 linka
 linlugg
-linné
 linne
+linné
 linnea
 linneansk
 linnebyxa
@@ -84944,6 +84944,7 @@ shah
 shake
 shaker
 shalom
+shaman
 shantung
 shantungsiden
 shanty
@@ -113698,6 +113699,7 @@ visningsrum
 visningssal
 visp
 vispa
+vispad
 vispgrädde
 vispgröt
 vispig
