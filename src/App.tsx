@@ -155,7 +155,7 @@ const App: FC = () => {
 
         {/* Desktop */}
         <div className="w-full hidden md:flex flex-row flex-1 bg-neutral-200 dark:bg-darkneutral-300 pt-4 gap-2 items-center justify-center">
-          <div className="flex flex-col flex-1 items-center">
+          <div className="flex flex-col flex-1 items-center max-w-[600px]">
             <Guess currentGuess={guess} />
             <HexagonGrid
               characters={charArray}
