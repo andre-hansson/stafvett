@@ -11,6 +11,7 @@ const addedWordsList = convertFileToArray(`${wordFilePath}/added-words.txt`);
 
 const all = originalWordsList
   .concat(addedWordsList)
-  .filter((word) => !removedWordsList.has(word));
+  .filter((word) => !removedWordsList.has(word))
+  .sort((a, b) => a.localeCompare(b, 'sv'));
 
 writeFileSync(`${wordFilePath}/all-words.txt`, all.join('\n'));

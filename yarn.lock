@@ -655,6 +655,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/readline-sync@npm:^1":
+  version: 1.4.8
+  resolution: "@types/readline-sync@npm:1.4.8"
+  checksum: 08da90bbc4905f42eea2f7e03253f86b8060e93dbd427cc2ef5ebc0955248088c85e1638dd480ce28e2e576624979a81e12d1371d2c38e1796002ca8efbc719f
+  languageName: node
+  linkType: hard
+
 "@types/scheduler@npm:*":
   version: 0.16.8
   resolution: "@types/scheduler@npm:0.16.8"
@@ -2652,6 +2659,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"readline-sync@npm:^1.4.10":
+  version: 1.4.10
+  resolution: "readline-sync@npm:1.4.10"
+  checksum: 0a4d0fe4ad501f8f005a3c9cbf3cc0ae6ca2ced93e9a1c7c46f226bdfcb6ef5d3f437ae7e9d2e1098ee13524a3739c830e4c8dbc7f543a693eecd293e41093a3
+  languageName: node
+  linkType: hard
+
 "resolve-from@npm:^4.0.0":
   version: 4.0.0
   resolution: "resolve-from@npm:4.0.0"
@@ -2889,6 +2903,7 @@ __metadata:
     "@types/cli-progress": "npm:^3"
     "@types/react": "npm:^18.2.43"
     "@types/react-dom": "npm:^18.2.17"
+    "@types/readline-sync": "npm:^1"
     "@typescript-eslint/eslint-plugin": "npm:^6.14.0"
     "@typescript-eslint/parser": "npm:^6.14.0"
     "@vitejs/plugin-react-swc": "npm:^3.5.0"
@@ -2904,6 +2919,7 @@ __metadata:
     prettier: "npm:^3.2.5"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
+    readline-sync: "npm:^1.4.10"
     sonner: "npm:^1.4.0"
     tailwindcss: "npm:^3.4.1"
     tsx: "npm:^4.7.0"

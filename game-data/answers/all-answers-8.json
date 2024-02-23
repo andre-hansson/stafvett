@@ -7737,6 +7737,7 @@
       "sanna",
       "sans",
       "sansa",
+      "shaman",
       "skank",
       "skanna",
       "skans",
@@ -14931,6 +14932,7 @@
       "sans",
       "sansa",
       "sauna",
+      "shaman",
       "snagg",
       "snagga",
       "snugga",
@@ -33855,6 +33857,7 @@
       "visa",
       "visavi",
       "vispa",
+      "vispad",
       "vissla",
       "viva"
     ],
@@ -80467,6 +80470,7 @@
       "sans",
       "sansa",
       "sauna",
+      "shaman",
       "snabb",
       "snabba",
       "snabbuss",
@@ -203808,6 +203812,7 @@
       "sams",
       "samsa",
       "samsas",
+      "shaman",
       "skam",
       "smak",
       "smaka",
@@ -204139,7 +204144,8 @@
       "vippa",
       "vips",
       "visp",
-      "vispa"
+      "vispa",
+      "vispad"
     ],
     "main": "p",
     "characters": "adiopsv"
