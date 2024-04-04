@@ -42,7 +42,7 @@ const App: FC = () => {
   const [charArray, setCharArray] = useState<string[]>([]);
 
   useEffect(() => {
-    const date = dayjs('2024-04-05');
+    const date = dayjs();
 
     // Only create one game per day
     if (date.isSame(gameDate, 'day')) return;
