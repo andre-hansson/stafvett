@@ -1,4 +1,5 @@
 import { BackspaceIcon } from './BackspaceIcon';
+import { BarChartIcon } from './BarChartIcon';
 import { CheckIcon } from './CheckIcon';
 import { ChevronDownIcon } from './ChevronDownIcon';
 import { CloseIcon } from './CloseIcon';
@@ -9,6 +10,7 @@ import { SunIcon } from './SunIcon';
 
 export const Icon = {
   Backspace: BackspaceIcon,
+  BarChart: BarChartIcon,
   Check: CheckIcon,
   ChevronDown: ChevronDownIcon,
   Close: CloseIcon,

@@ -1,8 +1,7 @@
 import { FC, useMemo } from 'react';
 import { useActiveGameStore } from '../../store';
-import { isPangram } from '../../utils/points';
-import classNames from 'classnames';
 import dayjs from 'dayjs';
+import { FoundWords } from '../FoundWords';
 
 export const YesterdaysAnswersModal: FC = () => {
   const {
@@ -10,8 +9,7 @@ export const YesterdaysAnswersModal: FC = () => {
     yesterdayAnswers,
     yesterdayCharacters,
     yesterdayMain,
-    yesterdayScore,
-    yesterdayCorrectGuesses
+    yesterdayScore
   } = useActiveGameStore();
 
   const { rows, sortedGuesses } = useMemo(() => {
@@ -55,40 +53,7 @@ export const YesterdaysAnswersModal: FC = () => {
         </div>
       </div>
       <div className="border border-darkneutral-400 max-h-96 overflow-y-scroll">
-        {Array.from({ length: rows }).map((_, row) => {
-          const guessesInRow = sortedGuesses.slice(3 * row, 3 * row + 3);
-          return (
-            <div
-              key={row}
-              className="nth-[2n]:bg-darkneutral-400/50 flex justify-evenly"
-            >
-              {guessesInRow.map((guess, index) => (
-                <div
-                  key={index}
-                  className={classNames(
-                    'py-1.5 px-2 text-center flex-1',
-                    yesterdayCorrectGuesses.indexOf(guess) !== -1
-                      ? 'bg-purple-300 text-darkneutral-300'
-                      : ''
-                  )}
-                >
-                  <span
-                    className={classNames(
-                      isPangram(guess)
-                        ? 'text-green-800 dark:text-green-300 font-bold'
-                        : ''
-                    )}
-                  >
-                    {guess}
-                  </span>
-                </div>
-              ))}
-              {guessesInRow.length !== 3 && (
-                <div style={{ width: `calc(100% / ${guessesInRow.length})` }} />
-              )}
-            </div>
-          );
-        })}
+        <FoundWords rows={rows} foundWords={sortedGuesses} highlightFound />
       </div>
       <div className="flex justify-center mt-2">
         Lila ord hittades i föregående pussel

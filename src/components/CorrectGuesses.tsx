@@ -1,10 +1,12 @@
-import { AnimatePresence, motion } from 'framer-motion';
-import { FC, useCallback, useMemo } from 'react';
+import { FC, useCallback, useEffect, useMemo } from 'react';
 import { useActiveGameStore } from '../store';
 import { CorrectGuessesModal } from './Modals';
 import { useModal } from '../hooks';
 import { Button } from './Buttons';
 import { FoundWords } from './FoundWords';
+import { Progressbar } from './Progress/Progressbar';
+import { motion, useSpring } from 'framer-motion';
+import classNames from 'classnames';
 
 export const CorrectGuesses: FC = () => {
   const { correctGuesses } = useActiveGameStore();
@@ -22,38 +24,39 @@ export const CorrectGuesses: FC = () => {
     };
   }, [correctGuesses]);
 
-  return (
-    <div className="flex-1 flex w-full">
-      <AnimatePresence initial={false}>
-        {!!sortedGuesses.length && (
-          <motion.section
-            key="content"
-            initial="collapsed"
-            animate="open"
-            exit="collapsed"
-            variants={{
-              open: { opacity: 1, y: 0 },
-              collapsed: { opacity: 0, y: 164 }
-            }}
-            transition={{ duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98] }}
-            style={{
-              overflow: 'hidden',
-              width: '100%',
-              display: 'flex',
-              flexDirection: 'column'
-            }}
-          >
-            <div className="bg-neutral-400 dark:bg-darkneutral-350 w-full flex-1 pt-2 px-2 rounded-t-xl flex flex-col">
-              <h2 className="font-heading text-md text-center">Hittade ord</h2>
-              <FoundWords rows={rows} foundWords={sortedGuesses} />
+  const sortedGuessesHeight = useSpring(0);
 
-              <div className="flex-1 flex justify-center items-start pt-4">
-                <Button onClick={showAllCorrectGuesses} label={'Visa alla'} />
-              </div>
-            </div>
-          </motion.section>
+  useEffect(() => {
+    if (sortedGuesses.length > 3) {
+      sortedGuessesHeight.set(128);
+    } else if (sortedGuesses.length > 0) {
+      sortedGuessesHeight.set(92);
+    } else {
+      sortedGuessesHeight.set(0);
+    }
+  }, [sortedGuesses, sortedGuessesHeight]);
+
+  return (
+    <div className="flex-1 flex flex-col w-full rounded-b-xl">
+      <div className="">
+        <Progressbar />
+      </div>
+      <motion.div
+        className={classNames(
+          'bg-neutral-400 dark:bg-darkneutral-350 overflow-hidden shadow-md',
+          'rounded-b-xl flex flex-col'
         )}
-      </AnimatePresence>
+        style={{
+          height: sortedGuessesHeight
+        }}
+      >
+        <div className="p-2">
+          <FoundWords rows={rows} foundWords={sortedGuesses} />
+          <div className="flex justify-center items-end pt-1.5 px-2">
+            <Button onClick={showAllCorrectGuesses} label={'Visa alla'} />
+          </div>
+        </div>
+      </motion.div>
     </div>
   );
 };

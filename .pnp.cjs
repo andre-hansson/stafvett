@@ -45,6 +45,7 @@ const RAW_RUNTIME_STATE =
           ["prettier", "npm:3.2.5"],\
           ["react", "npm:18.2.0"],\
           ["react-dom", "virtual:ddda2d98ebc100066ef86db98a2ab31588dac90eebe918d3a78dd8f4d391d6f2006ef3cbb325103774d173f5b9cac0285c5a9161f84cf3c997ce59735ce84d15#npm:18.2.0"],\
+          ["react-hook-form", "virtual:ddda2d98ebc100066ef86db98a2ab31588dac90eebe918d3a78dd8f4d391d6f2006ef3cbb325103774d173f5b9cac0285c5a9161f84cf3c997ce59735ce84d15#npm:7.51.1"],\
           ["readline-sync", "npm:1.4.10"],\
           ["sonner", "virtual:ddda2d98ebc100066ef86db98a2ab31588dac90eebe918d3a78dd8f4d391d6f2006ef3cbb325103774d173f5b9cac0285c5a9161f84cf3c997ce59735ce84d15#npm:1.4.0"],\
           ["tailwindcss", "npm:3.4.1"],\
@@ -3236,6 +3237,28 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["react-hook-form", [\
+      ["npm:7.51.1", {\
+        "packageLocation": "../../../.yarn/berry/cache/react-hook-form-npm-7.51.1-3750e331ea-10c0.zip/node_modules/react-hook-form/",\
+        "packageDependencies": [\
+          ["react-hook-form", "npm:7.51.1"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:ddda2d98ebc100066ef86db98a2ab31588dac90eebe918d3a78dd8f4d391d6f2006ef3cbb325103774d173f5b9cac0285c5a9161f84cf3c997ce59735ce84d15#npm:7.51.1", {\
+        "packageLocation": "./.yarn/__virtual__/react-hook-form-virtual-2e32851edf/4/.yarn/berry/cache/react-hook-form-npm-7.51.1-3750e331ea-10c0.zip/node_modules/react-hook-form/",\
+        "packageDependencies": [\
+          ["react-hook-form", "virtual:ddda2d98ebc100066ef86db98a2ab31588dac90eebe918d3a78dd8f4d391d6f2006ef3cbb325103774d173f5b9cac0285c5a9161f84cf3c997ce59735ce84d15#npm:7.51.1"],\
+          ["@types/react", "npm:18.2.55"],\
+          ["react", "npm:18.2.0"]\
+        ],\
+        "packagePeers": [\
+          "@types/react",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["read-cache", [\
       ["npm:1.0.0", {\
         "packageLocation": "../../../.yarn/berry/cache/read-cache-npm-1.0.0-00fa89ed05-10c0.zip/node_modules/read-cache/",\
@@ -3514,6 +3537,7 @@ const RAW_RUNTIME_STATE =
           ["prettier", "npm:3.2.5"],\
           ["react", "npm:18.2.0"],\
           ["react-dom", "virtual:ddda2d98ebc100066ef86db98a2ab31588dac90eebe918d3a78dd8f4d391d6f2006ef3cbb325103774d173f5b9cac0285c5a9161f84cf3c997ce59735ce84d15#npm:18.2.0"],\
+          ["react-hook-form", "virtual:ddda2d98ebc100066ef86db98a2ab31588dac90eebe918d3a78dd8f4d391d6f2006ef3cbb325103774d173f5b9cac0285c5a9161f84cf3c997ce59735ce84d15#npm:7.51.1"],\
           ["readline-sync", "npm:1.4.10"],\
           ["sonner", "virtual:ddda2d98ebc100066ef86db98a2ab31588dac90eebe918d3a78dd8f4d391d6f2006ef3cbb325103774d173f5b9cac0285c5a9161f84cf3c997ce59735ce84d15#npm:1.4.0"],\
           ["tailwindcss", "npm:3.4.1"],\

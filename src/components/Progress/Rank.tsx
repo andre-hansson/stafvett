@@ -22,14 +22,14 @@ export const Rank: FC = () => {
 
   return (
     <div
-      className="font-heading text-lg md:text-xl text-center uppercase"
+      className="font-heading text-sm md:text-base text-center uppercase"
       onClick={showAllRanks}
     >
-      <span className="font-bold text-purple-800 dark:text-purple-300 invisible">
+      <span className="text-sm md:text-base font-bold text-purple-800 dark:text-purple-300 invisible">
         ({score})
       </span>
       {currentRank} (
-      <span className="text-base md:text-lg font-bold text-purple-800 dark:text-purple-300">
+      <span className="text-sm md:text-base font-bold text-purple-800 dark:text-purple-300">
         {score}
       </span>
       )

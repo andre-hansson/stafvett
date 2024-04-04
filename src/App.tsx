@@ -15,6 +15,7 @@ import { Icon } from './icons';
 import { ModalProvider } from './components/Modals';
 import { CorrectGuesses } from './components/CorrectGuesses';
 import { CorrectGuessesWeb } from './components/CorrectGuessesWeb';
+import { FormProvider, useForm } from 'react-hook-form';
 
 const App: FC = () => {
   const {
@@ -30,11 +31,18 @@ const App: FC = () => {
     updateScore
   } = useActiveGameStore();
 
-  const [guess, setGuess] = useState('');
+  const formMethods = useForm<{ guess: string }>({
+    defaultValues: {
+      guess: ''
+    }
+  });
+  const { setValue, watch } = formMethods;
+  const guess = watch('guess');
+
   const [charArray, setCharArray] = useState<string[]>([]);
 
   useEffect(() => {
-    const date = dayjs();
+    const date = dayjs('2024-04-05');
 
     // Only create one game per day
     if (date.isSame(gameDate, 'day')) return;
@@ -48,9 +56,9 @@ const App: FC = () => {
 
   const handleAddCharacterToGuess = useCallback(
     (char: string) => {
-      setGuess((current) => current + char);
+      setValue('guess', guess + char);
     },
-    [setGuess]
+    [guess, setValue]
   );
 
   useEffect(() => {
@@ -58,8 +66,8 @@ const App: FC = () => {
   }, [characters, main, setCharArray]);
 
   const handleDeleteChar = useCallback(() => {
-    setGuess((prev) => prev.slice(0, -1));
-  }, [setGuess]);
+    setValue('guess', guess.slice(0, -1));
+  }, [guess, setValue]);
 
   const handleShuffle = useCallback(() => {
     setCharArray(shuffleArray(charArray));
@@ -84,7 +92,7 @@ const App: FC = () => {
           <div className="toast warn">{`🙃 Ordet har redan hittats`}</div>
         ));
 
-        setGuess('');
+        setValue('guess', '');
         return;
       }
 
@@ -99,7 +107,7 @@ const App: FC = () => {
         <div className="toast warn">{`🤦 Ordet finns inte med i listan`}</div>
       ));
     }
-    setGuess('');
+    setValue('guess', '');
   }, [
     answers,
     correctGuesses,
@@ -107,7 +115,7 @@ const App: FC = () => {
     main,
     addCorrectGuess,
     updateScore,
-    setGuess
+    setValue
   ]);
 
   useEffect(() => {
@@ -129,53 +137,72 @@ const App: FC = () => {
   }, [characters, handleGuess, handleDeleteChar, handleAddCharacterToGuess]);
 
   return (
-    <ModalProvider>
-      <div className="flex flex-col items-center h-screen">
-        <Header />
-        {/* <Answers /> */}
+    <FormProvider {...formMethods}>
+      <ModalProvider>
+        <div className="flex flex-col items-center h-full">
+          <Header />
+          {/* <Answers /> */}
 
-        {/* Mobile */}
-        <div className="w-full flex md:hidden flex-col md:flex-row flex-1 bg-neutral-200 dark:bg-darkneutral-300 pt-4 gap-2 items-center">
-          <Guess currentGuess={guess} />
-          <HexagonGrid
-            characters={charArray}
-            onHexagonClick={handleAddCharacterToGuess}
-          />
-          <div className="flex gap-4 mt-3 mb-3">
-            <Button label={<Icon.Backspace />} onClick={handleDeleteChar} />
-            <Button label={<Icon.Shuffle />} onClick={handleShuffle} />
-            <Button
-              label={<Icon.Check />}
-              onClick={handleGuess}
-              disabled={!(guess.length > 3)}
-            />
-          </div>
-          <CorrectGuesses />
-        </div>
+          {/* Mobile */}
+          <div className="w-full flex md:hidden flex-col pb-4 md:flex-row flex-1 bg-neutral-200 dark:bg-darkneutral-300 gap-6 items-center">
+            <div className="flex-1 flex w-full">
+              <CorrectGuesses />
+            </div>
 
-        {/* Desktop */}
-        <div className="w-full hidden md:flex flex-row flex-1 bg-neutral-200 dark:bg-darkneutral-300 pt-4 gap-2 items-center justify-center">
-          <div className="flex flex-col flex-1 items-center max-w-[600px]">
-            <Guess currentGuess={guess} />
-            <HexagonGrid
-              characters={charArray}
-              onHexagonClick={handleAddCharacterToGuess}
-            />
-            <div className="flex gap-4 mt-3 mb-3">
-              <Button label={<Icon.Backspace />} onClick={handleDeleteChar} />
-              <Button label={<Icon.Shuffle />} onClick={handleShuffle} />
-              <Button
-                label={<Icon.Check />}
-                onClick={handleGuess}
-                disabled={!(guess.length > 3)}
+            <div className="flex-0 flex flex-col gap-1 justify-end items-center">
+              <Guess currentGuess={guess} />
+              <HexagonGrid
+                characters={charArray}
+                onHexagonClick={handleAddCharacterToGuess}
               />
+              <div className="flex gap-4 pt-3">
+                <Button label={<Icon.Backspace />} onClick={handleDeleteChar} />
+                <Button label={<Icon.Shuffle />} onClick={handleShuffle} />
+                <Button
+                  label={<Icon.Check />}
+                  onClick={handleGuess}
+                  disabled={!(guess.length > 3)}
+                />
+              </div>
+              <div className="flex flex-col items-center select-none">
+                <div className="text-xs">Hittade ord</div>
+                <div className="text-xl">
+                  {correctGuesses.length} / {answers.length}
+                </div>
+              </div>
             </div>
           </div>
-          <CorrectGuessesWeb />
+
+          {/* Desktop */}
+          <div className="w-full hidden md:flex flex-row flex-1 bg-neutral-200 dark:bg-darkneutral-300 pt-4 gap-2 items-center justify-center">
+            <div className="flex flex-col flex-1 items-center max-w-[600px]">
+              <Guess currentGuess={guess} />
+              <HexagonGrid
+                characters={charArray}
+                onHexagonClick={handleAddCharacterToGuess}
+              />
+              <div className="flex gap-4 mt-3 mb-3">
+                <Button label={<Icon.Backspace />} onClick={handleDeleteChar} />
+                <Button label={<Icon.Shuffle />} onClick={handleShuffle} />
+                <Button
+                  label={<Icon.Check />}
+                  onClick={handleGuess}
+                  disabled={!(guess.length > 3)}
+                />
+              </div>
+              <div className="flex flex-col items-center select-none">
+                <div className="text-xs">Hittade ord</div>
+                <div className="text-xl">
+                  {correctGuesses.length} / {answers.length}
+                </div>
+              </div>
+            </div>
+            <CorrectGuessesWeb />
+          </div>
         </div>
-      </div>
-      <Toaster position="top-center" richColors />
-    </ModalProvider>
+        <Toaster position="top-center" richColors />
+      </ModalProvider>
+    </FormProvider>
   );
 };
 

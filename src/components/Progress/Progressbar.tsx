@@ -29,7 +29,7 @@ export const Progressbar: FC = memo(() => {
 
   return (
     <div
-      className="h-4 md:h-5 flex-1 bg-neutral-400 dark:bg-darkneutral-400 rounded-full overflow-hidden relative"
+      className="h-2.5 flex-1 bg-neutral-400 dark:bg-darkneutral-400 md:rounded-t-lg overflow-hidden relative border-b border-neutral-500 dark:border-darkneutral-350"
       onClick={() => {
         if (process.env.NODE_ENV === 'development') {
           clearCorrectGuess();
