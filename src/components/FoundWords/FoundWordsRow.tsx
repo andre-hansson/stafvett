@@ -28,7 +28,7 @@ export const FoundWordsRow: FC<FoundWordsRowProps> = ({
           ? 'text-neutral-200 bg-purple-800 dark:text-darkneutral-300 dark:bg-purple-500'
           : '',
         highlight && isPangram(guess)
-          ? 'text-green-400'
+          ? '!text-green-400'
           : isPangram(guess)
             ? 'text-green-600 dark:text-green-300 font-bold'
             : '',
