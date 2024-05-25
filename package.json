@@ -2,7 +2,8 @@
   "name": "spelling-bee",
   "packageManager": "yarn@4.0.2",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "homepage": "https://H4zze.github.io/stafvett",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,12 +11,15 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "generate-word-list": "tsx game-data/generateWordFile.ts",
-    "generate-answers": "tsx game-data/generateAnswers.ts"
+    "generate-answers": "tsx game-data/generateAnswers.ts",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "classnames": "^2.5.1",
     "dayjs": "^1.11.10",
     "framer-motion": "^11.0.3",
+    "gh-pages": "^6.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.51.1",
@@ -24,6 +28,7 @@
   },
   "devDependencies": {
     "@types/cli-progress": "^3",
+    "@types/gh-pages": "^6",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@types/readline-sync": "^1",
