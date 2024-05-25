@@ -1189,6 +1189,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"corepack@npm:^0.28.1":
+  version: 0.28.1
+  resolution: "corepack@npm:0.28.1"
+  bin:
+    corepack: ./dist/corepack.js
+    pnpm: ./dist/pnpm.js
+    pnpx: ./dist/pnpx.js
+    yarn: ./dist/yarn.js
+    yarnpkg: ./dist/yarnpkg.js
+  checksum: 7104276d092de4ba9580cbad5b48f16a7ad6026f3a2940585688973d307b3612d01f82b3ff9a338538774cc65a1aa553c578c65b12fa2e4d26d885236449dc00
+  languageName: node
+  linkType: hard
+
 "cross-spawn@npm:^7.0.0, cross-spawn@npm:^7.0.2":
   version: 7.0.3
   resolution: "cross-spawn@npm:7.0.3"
@@ -3149,6 +3162,7 @@ __metadata:
     autoprefixer: "npm:^10.4.17"
     classnames: "npm:^2.5.1"
     cli-progress: "npm:^3.12.0"
+    corepack: "npm:^0.28.1"
     dayjs: "npm:^1.11.10"
     eslint: "npm:^8.55.0"
     eslint-plugin-react-hooks: "npm:^4.6.0"

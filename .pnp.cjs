@@ -37,6 +37,7 @@ const RAW_RUNTIME_STATE =
           ["autoprefixer", "virtual:ddda2d98ebc100066ef86db98a2ab31588dac90eebe918d3a78dd8f4d391d6f2006ef3cbb325103774d173f5b9cac0285c5a9161f84cf3c997ce59735ce84d15#npm:10.4.17"],\
           ["classnames", "npm:2.5.1"],\
           ["cli-progress", "npm:3.12.0"],\
+          ["corepack", "npm:0.28.1"],\
           ["dayjs", "npm:1.11.10"],\
           ["eslint", "npm:8.56.0"],\
           ["eslint-plugin-react-hooks", "virtual:ddda2d98ebc100066ef86db98a2ab31588dac90eebe918d3a78dd8f4d391d6f2006ef3cbb325103774d173f5b9cac0285c5a9161f84cf3c997ce59735ce84d15#npm:4.6.0"],\
@@ -1569,6 +1570,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../../.yarn/berry/cache/concat-map-npm-0.0.1-85a921b7ee-10c0.zip/node_modules/concat-map/",\
         "packageDependencies": [\
           ["concat-map", "npm:0.0.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["corepack", [\
+      ["npm:0.28.1", {\
+        "packageLocation": "../../../.yarn/berry/cache/corepack-npm-0.28.1-f96ec1689b-10c0.zip/node_modules/corepack/",\
+        "packageDependencies": [\
+          ["corepack", "npm:0.28.1"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -3770,6 +3780,7 @@ const RAW_RUNTIME_STATE =
           ["autoprefixer", "virtual:ddda2d98ebc100066ef86db98a2ab31588dac90eebe918d3a78dd8f4d391d6f2006ef3cbb325103774d173f5b9cac0285c5a9161f84cf3c997ce59735ce84d15#npm:10.4.17"],\
           ["classnames", "npm:2.5.1"],\
           ["cli-progress", "npm:3.12.0"],\
+          ["corepack", "npm:0.28.1"],\
           ["dayjs", "npm:1.11.10"],\
           ["eslint", "npm:8.56.0"],\
           ["eslint-plugin-react-hooks", "virtual:ddda2d98ebc100066ef86db98a2ab31588dac90eebe918d3a78dd8f4d391d6f2006ef3cbb325103774d173f5b9cac0285c5a9161f84cf3c997ce59735ce84d15#npm:4.6.0"],\
