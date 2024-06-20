@@ -12,7 +12,7 @@
     "preview": "vite preview",
     "generate-word-list": "tsx game-data/generateWordFile.ts",
     "generate-answers": "tsx game-data/generateAnswers.ts",
-    "predeploy": "yarn build && mkdir dist/stafvett cp -r src/assets dist/stafvett/assets && cp -r public/. dist/stafvett/.",
+    "predeploy": "yarn build && mkdir dist/stafvett && cp -r src/assets dist/stafvett/assets && cp -r public/. dist/stafvett/.",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
