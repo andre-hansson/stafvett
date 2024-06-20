@@ -12,8 +12,8 @@
     "preview": "vite preview",
     "generate-word-list": "tsx game-data/generateWordFile.ts",
     "generate-answers": "tsx game-data/generateAnswers.ts",
-    "predeploy": "yarn build",
-    "deploy": "gh-pages -d build"
+    "predeploy": "yarn build && cp src/assets dist/stafvett/assets && cp public/. dist/stafvett/.",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "classnames": "^2.5.1",
