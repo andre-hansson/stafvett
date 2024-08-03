@@ -1,5 +1,7 @@
 # pull official base image
-FROM node:latest
+FROM node:20
+
+RUN corepack enable yarn
 
 # set working directory
 WORKDIR /app
@@ -7,11 +9,11 @@ WORKDIR /app
 # Copies package.json and package-lock.json to Docker environment
 COPY package.json yarn.lock ./
 
-# Installs all node packages
-RUN yarn install
-
 # Copies everything over to Docker environment
 COPY . .
+
+# Installs all node packages
+RUN yarn install
 
 # Build for production.
 RUN yarn run build
