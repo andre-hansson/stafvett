@@ -3,7 +3,7 @@
   "packageManager": "yarn@4.0.2",
   "private": true,
   "version": "1.0.0",
-  "homepage": "https://H4zze.github.io/stafvett",
+  "homepage": "https://stafvett.se",
   "type": "module",
   "scripts": {
     "dev": "vite",
