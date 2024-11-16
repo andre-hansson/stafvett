@@ -2,7 +2,8 @@ name: Build and Deploy
 
 on:
   push:
-    branches: ['main']
+    branches:
+      - main
 
 permissions:
   contents: write
@@ -18,17 +19,22 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
+
       - name: Enable Corepack
         run: corepack enable
+
       - name: Install Packages
         run: yarn install --frozen-lockfile
+
       - name: Build
         run: yarn predeploy
+
       - name: Deploy🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
