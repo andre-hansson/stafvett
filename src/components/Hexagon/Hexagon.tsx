@@ -33,7 +33,7 @@ export const Hexagon: FC<HexagonProps> = memo(
         <div className="flex">
           <div className="hexagon-left" style={{ borderColor: color }} />
           <div
-            className="hexagon-middle text-darkneutral-300 dark:text-neutral-300 uppercase font-heading font-medium"
+            className="hexagon-middle text-darkneutral-300 dark:text-neutral-300 uppercase font-heading font-medium select-none"
             style={{ backgroundColor: color }}
           >
             {character}

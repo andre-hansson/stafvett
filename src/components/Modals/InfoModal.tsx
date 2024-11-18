@@ -26,7 +26,7 @@ export const InfoModal: FC = () => {
       <div className="mt-8">
         <h3 className="font-heading text-base font-medium">Felaktiga ord</h3>
         <p className="text-[14px]">
-          Stöd för inrapportering av lanseras senare
+          Stöd för inrapportering av ord lanseras senare
         </p>
         <p className="text-[14px] line-through">
           Felaktiga, stötande eller ord som saknas uppdateras löpande. Skicka
