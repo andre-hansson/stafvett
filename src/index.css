@@ -90,19 +90,16 @@
 
 @layer components {
   .hexagon-left {
-    /* @apply w-0 border-r-[30px] border-t-[52px] border-b-[52px] border-t-transparent border-b-transparent !important; */
     @apply w-0 border-r-[22.5px] border-t-[39px] border-b-[39px] border-t-transparent border-b-transparent !important;
     @apply md:border-r-[30px] md:border-t-[52px] md:border-b-[52px] !important;
   }
 
   .hexagon-middle {
-    /* @apply w-[60px] h-[104px] flex justify-center items-center text-5xl; */
     @apply w-[45px] h-[78px] flex justify-center items-center text-3xl;
     @apply md:w-[60px] md:h-[104px] md:text-5xl;
   }
 
   .hexagon-right {
-    /* @apply w-0 border-l-[30px] border-t-[52px] border-b-[52px] border-t-transparent border-b-transparent !important; */
     @apply w-0 border-l-[22.5px]  border-t-[39px] border-b-[39px] border-t-transparent border-b-transparent !important;
     @apply md:border-l-[30px] md:border-t-[52px] md:border-b-[52px] !important;
   }

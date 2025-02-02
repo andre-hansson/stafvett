@@ -1,16 +1,17 @@
-import { FC, useCallback, useEffect, useMemo } from 'react';
-import { useActiveGameStore } from '../store';
-import { CorrectGuessesModal } from './Modals';
-import { useModal } from '../hooks';
-import { Button } from './Buttons';
-import { FoundWords } from './FoundWords';
+import { FC, useCallback, useEffect, useMemo, useRef } from 'react';
 import { Progressbar } from './Progress/Progressbar';
-import { motion, useSpring } from 'framer-motion';
+import { FoundWords } from './FoundWords';
+import { useActiveGameStore } from '../store';
+import { motion, useAnimate } from 'framer-motion';
 import classNames from 'classnames';
+import { Button } from './Buttons';
+import { useModal } from '../hooks';
+import { CorrectGuessesModal } from './Modals';
 
 export const CorrectGuesses: FC = () => {
   const { correctGuesses } = useActiveGameStore();
   const { setModal } = useModal();
+  const ref = useRef<HTMLDivElement | null>(null);
 
   const showAllCorrectGuesses = useCallback(() => {
     setModal(<CorrectGuessesModal />);
@@ -20,38 +21,52 @@ export const CorrectGuesses: FC = () => {
     const rows = Math.ceil(correctGuesses.length / 3);
     return {
       rows,
-      sortedGuesses: [...correctGuesses].reverse().slice(0, 6)
+      sortedGuesses: [...correctGuesses].reverse()
     };
   }, [correctGuesses]);
 
-  const sortedGuessesHeight = useSpring(0);
-
+  const [scope, animate] = useAnimate<HTMLDivElement>();
   useEffect(() => {
-    if (sortedGuesses.length > 3) {
-      sortedGuessesHeight.set(128);
-    } else if (sortedGuesses.length > 0) {
-      sortedGuessesHeight.set(92);
+    if (sortedGuesses.length > 0) {
+      animate(
+        scope.current,
+        {
+          height: Math.min(
+            ref.current?.offsetHeight ?? 0,
+            rows * 38 + 16 + 38 + 10
+          )
+        },
+        { duration: 0.2 }
+      );
     } else {
-      sortedGuessesHeight.set(0);
+      animate(scope.current, { height: 0 }, { duration: 0.2 });
     }
-  }, [sortedGuesses, sortedGuessesHeight]);
+  }, [sortedGuesses, ref, scope]);
 
   return (
-    <div className="flex-1 flex flex-col w-full rounded-b-xl">
-      <div className="">
+    <div
+      ref={ref}
+      className="flex-1 flex flex-col w-full rounded-b-xl overflow-hidden relative"
+    >
+      <div className="w-full absolute top-0 z-10 bg-neutral-400 dark:bg-darkneutral-350">
         <Progressbar />
       </div>
       <motion.div
+        ref={scope}
+        initial={{ height: 0 }}
         className={classNames(
-          'bg-neutral-400 dark:bg-darkneutral-350 overflow-hidden shadow-md',
-          'rounded-b-xl flex flex-col'
+          'bg-neutral-400 dark:bg-darkneutral-350 overflow-hidden shadow-md w-full',
+          'rounded-b-xl flex flex-col overflow-hidden'
         )}
-        style={{
-          height: sortedGuessesHeight
-        }}
       >
-        <div className="p-2">
-          <FoundWords rows={rows} foundWords={sortedGuesses} />
+        <div className="mt-2.5 p-2 h-full flex flex-col w-full">
+          <div
+            className="max-h-[100%] overflow-hidden"
+            style={{ flex: '1 1 0' }}
+          >
+            <FoundWords rows={rows} foundWords={sortedGuesses} scrollDisabled />
+          </div>
+
           <div className="flex justify-center items-end pt-1.5 px-2">
             <Button onClick={showAllCorrectGuesses} label={'Visa alla'} />
           </div>

@@ -2,7 +2,6 @@ import { FC, useMemo } from 'react';
 import { useActiveGameStore } from '../store';
 import { FoundWords } from './FoundWords';
 import { Progressbar } from './Progress/Progressbar';
-import { Rank } from './Progress';
 
 export const CorrectGuessesWeb: FC = () => {
   const { correctGuesses } = useActiveGameStore();
@@ -23,9 +22,6 @@ export const CorrectGuessesWeb: FC = () => {
         </div>
         <h2 className="font-heading text-md text-center">Hittade ord</h2>
         {rows > 0 && <FoundWords rows={rows} foundWords={sortedGuesses} />}
-        <div className="flex-1 flex flex-col justify-end">
-          <Rank />
-        </div>
       </div>
     </div>
   );

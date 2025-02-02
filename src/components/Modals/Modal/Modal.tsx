@@ -31,14 +31,14 @@ export const Modal: FC<ModalProps> = ({ handleClose, content }) => {
     <Overlay onClick={handleClose}>
       <motion.div
         onClick={(e) => e.stopPropagation()}
-        className="bg-neutral-300 dark:bg-darkneutral-300 rounded-lg px-4 pt-4 pb-8 text-darkneutral-300 dark:text-neutral-300 relative w-full md:w-[450px]"
+        className="bg-neutral-300 dark:bg-darkneutral-300 rounded-lg px-4 pt-4 pb-4 text-darkneutral-300 dark:text-neutral-300 relative w-full md:w-[450px]"
         variants={fadeIn}
         initial="hidden"
         animate="visible"
         exit="exit"
       >
         <div
-          className="absolute right-2 top-2 cursor-pointer p-1"
+          className="absolute right-2 top-2 cursor-pointer p-1 z-50"
           onClick={handleClose}
         >
           <Icon.Close size={20} />

@@ -58,6 +58,7 @@ export const useActiveGameStore = create<ActiveGameState>()(
       addCorrectGuess: (guess: string) => {
         set({
           correctGuesses: [...get().correctGuesses, guess]
+          // correctGuesses: [...get().answers]
         });
       },
       updateScore: (value: number) => {

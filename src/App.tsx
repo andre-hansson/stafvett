@@ -104,7 +104,7 @@ const App: FC = () => {
       ));
     } else {
       toast.custom(() => (
-        <div className="toast warn">{`🤦 Ordet finns inte med i listan`}</div>
+        <div className="toast warn">{`🤦 Ordet finns inte med i ordlistan`}</div>
       ));
     }
     setValue('guess', '');
@@ -155,11 +155,20 @@ const App: FC = () => {
                 characters={charArray}
                 onHexagonClick={handleAddCharacterToGuess}
               />
-              <div className="flex gap-4 pt-3">
-                <Button label={<Icon.Backspace />} onClick={handleDeleteChar} />
-                <Button label={<Icon.Shuffle />} onClick={handleShuffle} />
+              <div className="flex gap-4 pt-4 pb-2">
                 <Button
-                  label={<Icon.Check />}
+                  className="px-5 py-2.5"
+                  label={<Icon.Backspace size={32} />}
+                  onClick={handleDeleteChar}
+                />
+                <Button
+                  className="px-5 py-2.5"
+                  label={<Icon.Shuffle size={32} />}
+                  onClick={handleShuffle}
+                />
+                <Button
+                  className="px-5 py-2.5"
+                  label={<Icon.Check size={32} />}
                   onClick={handleGuess}
                   disabled={!(guess.length > 3)}
                 />
@@ -182,10 +191,19 @@ const App: FC = () => {
                 onHexagonClick={handleAddCharacterToGuess}
               />
               <div className="flex gap-4 mt-3 mb-3">
-                <Button label={<Icon.Backspace />} onClick={handleDeleteChar} />
-                <Button label={<Icon.Shuffle />} onClick={handleShuffle} />
                 <Button
-                  label={<Icon.Check />}
+                  className="px-5 py-2.5"
+                  label={<Icon.Backspace size={32} />}
+                  onClick={handleDeleteChar}
+                />
+                <Button
+                  className="px-5 py-2.5"
+                  label={<Icon.Shuffle size={32} />}
+                  onClick={handleShuffle}
+                />
+                <Button
+                  className="px-5 py-2.5"
+                  label={<Icon.Check size={32} />}
                   onClick={handleGuess}
                   disabled={!(guess.length > 3)}
                 />

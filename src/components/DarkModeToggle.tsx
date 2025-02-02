@@ -18,10 +18,13 @@ export const DarkModeToggle: FC = () => {
 
   useEffect(() => {
     const html = document.querySelector('html');
+    const meta = document.querySelector("meta[name='theme-color']");
     if (isDarkMode) {
       html?.classList.add('dark');
+      meta?.setAttribute('content', '#22272b');
     } else {
       html?.classList.remove('dark');
+      meta?.setAttribute('content', '#dcdfe4');
     }
   }, [isDarkMode]);
 

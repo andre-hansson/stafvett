@@ -5,14 +5,19 @@ import { useActiveGameStore } from '../../store';
 type HexagonGridProps = {
   characters: string[];
   onHexagonClick: (char: string) => void;
+  yesterday?: boolean;
 };
 export const HexagonGrid: FC<HexagonGridProps> = memo((props) => {
-  const { characters, onHexagonClick } = props;
-  const { main } = useActiveGameStore();
+  const { characters, yesterday = false, onHexagonClick } = props;
+  const { main: mainChar, yesterdayMain } = useActiveGameStore();
 
   const chars = useMemo(() => {
     return characters;
   }, [characters]);
+
+  const main = useMemo(() => {
+    return yesterday ? yesterdayMain : mainChar;
+  }, [yesterday, mainChar, yesterdayMain]);
 
   return (
     <div className="pt-[43px] md:pt-[56px]">
